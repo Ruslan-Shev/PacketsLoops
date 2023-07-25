@@ -1,19 +1,17 @@
 package ru.netology.services;
 
-public class FreeLancerMonthsOff {
-    public int calculate(int income, int expenses, int threshold) {
+public class FreelancerService {
+    public int calculateVacationMonths(int income, int expenses, int threshold) {
         int balance = 0;
-        int monthsOff = 0;
-        for (int i = 0; i <= 12; i++) {
-            balance += income - expenses;
-            if (balance >= threshold) {
-                monthsOff++;
-                balance -= threshold;
-            }
-            else {
-                balance -= expenses * 3;
+        int vacationMonths = 0;
+        for (int i = 1; i <= 12; i++) {
+            if (balance < threshold) {
+                balance += income - expenses;
+            } else {
+                vacationMonths++;
+                balance -= expenses + balance / 3;
             }
         }
-        return monthsOff;
+        return vacationMonths;
     }
 }
