@@ -9,7 +9,7 @@ public class FreelancerService {
                 balance += income - expenses;
             } else {
                 vacationMonths++;
-                balance -= expenses + balance / 3;
+                balance -= expenses + balance * 3;
             }
         }
         return vacationMonths;
